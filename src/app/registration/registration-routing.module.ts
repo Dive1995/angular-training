@@ -7,12 +7,12 @@ import { ShowAllStudentsComponent } from "./show-all-students/show-all-students.
 const routes: Routes = [
     { path: "reg", component: RegistrationComponent, children: [
         { path:"new-student", component: CreateNewStudentComponent },
-        { path:"all-students", component: ShowAllStudentsComponent }
+        { path:"", component: ShowAllStudentsComponent }
     ] }
 ];
 
 @NgModule({
-    imports:[RouterModule.forRoot(routes)],
+    imports:[RouterModule.forChild(routes)],
     exports:[RouterModule]
 })
 
