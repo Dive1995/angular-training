@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { InternalBaseComponent } from './internal-base/internal-base.component';
 import { ExternalBaseComponent } from './external-base/external-base.component';
 import { RegistrationModule } from './registration/registration.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegistrationModule } from './registration/registration.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RegistrationModule
+    RegistrationModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
