@@ -5,7 +5,7 @@ import { RegistrationComponent } from "./registration.component";
 import { ShowAllStudentsComponent } from "./show-all-students/show-all-students.component";
 
 const routes: Routes = [
-    { path: "reg", component: RegistrationComponent, children: [
+    { path: "", component: RegistrationComponent, children: [
         { path:"new-student", component: CreateNewStudentComponent },
         { path:"", component: ShowAllStudentsComponent }
     ] }
