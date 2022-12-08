@@ -1,9 +1,10 @@
 <div class="content">
   <h2>Login</h2>
-  <form action="">
-    <input type="text" name="name" placeholder="Username" />
-    <input type="password" name="address" placeholder="Password" />
+  <form action="" [formGroup]="loginForm" (ngSubmit)="login()">
+    <input type="text" formControlName="username" placeholder="Username" />
+    <input type="password" formControlName="password" placeholder="Password" />
+    <input type="submit" value="Log in" />
   </form>
   <button (click)="goBack()">Go back</button>
-  <button (click)="login()">Log In</button>
+  <!-- <button (click)="login()">Log In</button> -->
 </div>
