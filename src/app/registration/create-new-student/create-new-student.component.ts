@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-create-new-student',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateNewStudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
   }
 
+  addNewStudent(data: NgForm){
+    console.log(data);
+    this.studentService.addNewStudent(data.value);
+  }
 }
