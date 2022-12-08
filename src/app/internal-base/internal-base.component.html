@@ -7,8 +7,11 @@
     <li>
       <a routerLink="/reg">Registration</a>
     </li>
-    <li>
+    <li *ngIf="isLoggedIn == false">
       <a routerLink="/auth/login">Login</a>
+    </li>
+    <li *ngIf="isLoggedIn == true">
+      <a (click)="signOut()">Sign out</a>
     </li>
   </ul>
 </nav>

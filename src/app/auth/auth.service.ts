@@ -11,4 +11,8 @@ export class AuthService {
   login(): void{
     this.isLoggedIn = true;
   }
+
+  signOut(){
+    this.isLoggedIn = false;
+  }
 }
