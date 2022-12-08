@@ -1,0 +1,27 @@
+.content{
+    background-color: aliceblue;
+    max-width: 900px;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+    form{
+        input{
+            padding: 5px;
+            border:none;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            margin: 10px auto;
+        }
+    }
+    button{
+        padding: 7px 10px; 
+        border: none;
+        border-radius: 5px;
+        box-shadow: 3px 3px 8px rgba($color: #000000, $alpha: 0.2);
+        cursor: pointer;
+        font-weight: bold; 
+        margin: 10px auto;
+    }
+}
