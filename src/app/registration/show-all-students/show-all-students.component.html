@@ -6,5 +6,11 @@
     voluptas nihil nostrum. Aperiam, provident sint quo nihil unde dolor facere!
   </p>
 
+  <div class="student" *ngFor="let student of studentList">
+    <p style="font-weight: bold; font-size: 20px">{{ student.name }}</p>
+    <p>{{ student.address }}</p>
+    <p>{{ student.phone }}</p>
+  </div>
+
   <a (click)="addNewUser()">Click here to add new student!</a>
 </div>

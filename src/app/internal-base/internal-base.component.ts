@@ -1,4 +1,5 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 export class InternalBaseComponent implements OnInit {
   isLoggedIn: boolean;
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService, private router: Router) { 
     this.isLoggedIn = this.authService.isLoggedIn;
   }
 
@@ -19,6 +20,7 @@ export class InternalBaseComponent implements OnInit {
   signOut():void{
     this.authService.signOut();
     this.isLoggedIn = this.authService.isLoggedIn;
+    this.router.navigateByUrl('/');
   }
 
   
