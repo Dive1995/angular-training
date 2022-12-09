@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private location: Location, private authService: AuthService) { 
     this.loginForm = new FormGroup({
-      username : new FormControl(null),
-      password : new FormControl(null)
+      username : new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      password : new FormControl(null, [Validators.required, Validators.minLength(8)])
     })
   }
 
@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
 
   login(){
     console.log(this.loginForm.value);
+    console.log(this.loginForm);
+    
     this.authService.login();
     this.location.back();
   }

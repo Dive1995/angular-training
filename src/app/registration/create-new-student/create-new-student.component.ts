@@ -19,6 +19,6 @@ export class CreateNewStudentComponent implements OnInit {
     console.log(data.value);
     this.studentService.addNewStudent(data.value);
     data.resetForm();
-    // this.router.navigateByUrl('/reg');
+    this.router.navigateByUrl('/reg');
   }
 }
