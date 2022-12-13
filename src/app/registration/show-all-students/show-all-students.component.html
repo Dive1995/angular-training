@@ -8,9 +8,9 @@
 
   <div class="student" *ngFor="let student of studentList; let i = index">
     <div routerLink="/student/:{i}">
-      <p style="font-weight: bold; font-size: 20px">{{ student.name }}</p>
+      <p style="font-weight: bold; font-size: 20px">{{ student.firstName }}</p>
       <p>{{ student.address }}</p>
-      <p>{{ student.phone }}</p>
+      <p>{{ student.mobileNum }}</p>
     </div>
   </div>
 

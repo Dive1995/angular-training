@@ -1,5 +1,11 @@
 export interface IStudent{
-    name: string;
+    firstName: string;
+    lastName: string;
     address: string;
-    phone: number;
+    mobileNum: string;
+    landlineNum: string;
+    dateOfBirth: Date;
+    batch: number;
+    registrationId: string;
+    degreeId: number;
 }

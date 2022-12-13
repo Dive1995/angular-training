@@ -5,7 +5,7 @@ import { ShowAllStudentsComponent } from './show-all-students/show-all-students.
 import { RegistrationRoutingModule } from './registration-routing.module';
 import { RegistrationComponent } from './registration.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RegistrationRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: []
 })

@@ -12,7 +12,8 @@ export class ShowAllStudentsComponent implements OnInit {
   studentList: IStudent[] = [];
 
   constructor(private router: Router, private studentService: StudentService) {
-    this.studentList = this.studentService.allStudents();
+    this.studentService.getAllStudent().subscribe(res => this.studentList = res);
+    this.studentService.getStudent('CS20220001').subscribe(res => console.log(res));
   }
 
   ngOnInit(): void {
