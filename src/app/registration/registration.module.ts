@@ -4,7 +4,7 @@ import { CreateNewStudentComponent } from './create-new-student/create-new-stude
 import { ShowAllStudentsComponent } from './show-all-students/show-all-students.component';
 import { RegistrationRoutingModule } from './registration-routing.module';
 import { RegistrationComponent } from './registration.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     RegistrationRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
