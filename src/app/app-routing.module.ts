@@ -4,11 +4,13 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 import { ExternalBaseComponent } from './external-base/external-base.component';
 import { InternalBaseComponent } from './internal-base/internal-base.component';
 import { RegistrationRoutingModule } from './registration/registration-routing.module';
+import { LoggedInGuard } from './auth/logged-in.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: InternalBaseComponent,
+    canActivate: [LoggedInGuard],
     children: [{ path: 'reg', loadChildren: () => RegistrationRoutingModule }],
   },
   {

@@ -35,14 +35,14 @@
     <label for="batch">Batch</label>
 
     <select id="batch" formControlName="batch">
-      <option disabled [defaultSelected]="true">Select a Batch</option>
+      <option disabled selected="true">Select a Batch</option>
       <option value="2022">2022</option>
       <option value="2023">2023</option>
     </select>
 
     <label for="degreeId">Degree : </label>
     <select id="degreeId" formControlName="degreeId">
-      <option disabled [defaultSelected]="true">Select a degree program</option>
+      <option disabled selected="true">Select a degree program</option>
       <ng-container *ngFor="let degree of degreeList">
         <option value="{{ degree?.id }}">
           {{ degree.code }} - {{ degree.name }}

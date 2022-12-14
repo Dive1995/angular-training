@@ -39,9 +39,9 @@ export class CreateNewStudentComponent implements OnInit {
   }
 
   addNewStudent(){
-    console.log("Submit");
-    console.log(this.registrationForm.value);
-    this.studentService.addNewStudent(this.registrationForm.value).subscribe(res => console.log(res))
+    if(this.registrationForm.valid){
+      this.studentService.addNewStudent(this.registrationForm.value).subscribe(res => console.log(res))
+    }
     // this.router.navigateByUrl('/reg');
   }
 
