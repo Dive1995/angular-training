@@ -1,0 +1,25 @@
+<div>
+  <label class="form-label" for="search">Search student</label>
+  <input
+    class="form-control"
+    id="search"
+    type="text"
+    [(ngModel)]="searchName"
+  />
+  <button (click)="callSearch()" class="btn btn-primary">Search</button>
+
+  <div *ngIf="searchResultFromParent?.length > 0">
+    <p>You searched for : {{ searchName }}</p>
+    <p>Results:</p>
+    <div
+      class="bg-light"
+      style="padding: 5px; border-radius: 5px; margin-bottom: 5px"
+      *ngFor="let result of searchResultFromParent"
+    >
+      <p>
+        <b>{{ result.registrationId }}</b> {{ result.firstName }}
+        {{ result.lastName }}
+      </p>
+    </div>
+  </div>
+</div>

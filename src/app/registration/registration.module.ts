@@ -6,13 +6,15 @@ import { RegistrationRoutingModule } from './registration-routing.module';
 import { RegistrationComponent } from './registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchStudentComponent } from './search-student/search-student.component';
 
 
 @NgModule({
   declarations: [
     CreateNewStudentComponent,
     ShowAllStudentsComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SearchStudentComponent
   ],
   imports: [
     CommonModule,

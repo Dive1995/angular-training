@@ -6,31 +6,10 @@
     voluptas nihil nostrum. Aperiam, provident sint quo nihil unde dolor facere!
   </p>
 
-  <div>
-    <label class="form-label" for="search">Search student</label>
-    <input
-      class="form-control"
-      id="search"
-      type="text"
-      [(ngModel)]="searchName"
-    />
-    <button (click)="searchStudent()" class="btn btn-primary">Search</button>
-
-    <div *ngIf="searchResult?.length > 0">
-      <p>You searched for : {{ searchName }}</p>
-      <p>Results:</p>
-      <div
-        class="bg-light"
-        style="padding: 5px; border-radius: 5px; margin-bottom: 5px"
-        *ngFor="let result of searchResult"
-      >
-        <p>
-          <b>{{ result.registrationId }}</b> {{ result.firstName }}
-          {{ result.lastName }}
-        </p>
-      </div>
-    </div>
-  </div>
+  <app-search-student
+    [searchResultFromParent]="searchResult"
+    (searchEvent)="searchStudent($event)"
+  ></app-search-student>
 
   <div class="student" *ngFor="let student of studentList; let i = index">
     <div routerLink="/student/:{i}">
