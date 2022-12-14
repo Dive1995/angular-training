@@ -11,7 +11,10 @@ import { StudentService } from '../student.service';
 export class ShowAllStudentsComponent implements OnInit {
   studentList: IStudent[] = [];
 
-  constructor(private router: Router, private studentService: StudentService) {
+  constructor(
+    private router: Router, 
+    private studentService: StudentService
+    ) {
     this.studentService.getAllStudent().subscribe(res => this.studentList = res);
     this.studentService.getStudent('CS20220001').subscribe(res => console.log(res));
   }

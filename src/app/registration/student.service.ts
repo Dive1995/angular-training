@@ -36,7 +36,7 @@ export class StudentService {
   }
 
   addNewStudent(student: any): Observable<IStudent>{
-    return this.http.post<IStudent>(`${this.baseUrl}/create`, {student})
+    return this.http.post<IStudent>(`${this.baseUrl}/create`, student)
   }
 
 }
