@@ -1,57 +1,192 @@
-<div class="content">
+<div class="container">
   <h2>New Student register.</h2>
 
   <form (ngSubmit)="addNewStudent()" [formGroup]="registrationForm">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" formControlName="firstName" />
+    <div class="form-group">
+      <label for="fname" class="form-label">First Name</label>
+      <input
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('firstName')?.errors &&
+            registrationForm.controls['firstName'].touched
+        }"
+        type="text"
+        id="fname"
+        formControlName="firstName"
+      />
+      <div class="invalid-feedback">First Name is required.</div>
+    </div>
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" formControlName="lastName" />
-
-    <label for="address">Address</label>
-    <input type="text" id="address" formControlName="address" />
-
-    <label for="mobileNum">Mobile Number</label>
-    <input type="text" id="mobileNum" formControlName="mobileNum" />
-
-    <label for="landlineNum">Landline Number</label>
-    <input type="text" id="landlineNum" formControlName="landlineNum" />
-
-    <label for="dateOfBirth">Date of birth</label>
-    <input type="text" id="dateOfBirth" formControlName="dateOfBirth" />
-
-    <label for="date" class="col-1 col-form-label">Date</label>
-    <div class="col-5">
-      <div class="input-group date" id="datepicker">
-        <input type="text" class="form-control" id="date" />
-        <span class="input-group-append">
-          <span class="input-group-text bg-light d-block">
-            <i class="fa fa-calendar"></i>
-          </span>
-        </span>
+    <div class="form-group">
+      <label class="form-label" for="lname">Last Name</label>
+      <input
+        class="form-control"
+        type="text"
+        id="lname"
+        formControlName="lastName"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('lastName')?.errors &&
+            registrationForm.get('lastName')?.touched
+        }"
+      />
+      <div>
+        <!-- <div class="invalid-feedback">Last Name is required.</div> -->
+        <small
+          class="text-danger"
+          *ngIf="
+            (registrationForm.get('lastName')?.errors &&
+              registrationForm.get('lastName')?.touched) ||
+            registrationForm.get('lastName')?.dirty
+          "
+          >Last Name is required</small
+        >
       </div>
     </div>
 
-    <label for="batch">Batch</label>
+    <div class="form-group">
+      <label class="form-label" for="address">Address</label>
+      <input
+        class="form-control"
+        type="text"
+        id="address"
+        formControlName="address"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('address')?.errors &&
+            registrationForm.get('address')?.touched
+        }"
+      />
+      <div>
+        <small
+          class="text-danger"
+          *ngIf="
+            (registrationForm.get('address')?.errors &&
+              registrationForm.get('address')?.touched) ||
+            registrationForm.get('address')?.dirty
+          "
+          >Address is required.</small
+        >
+      </div>
+    </div>
 
-    <select id="batch" formControlName="batch">
-      <option disabled selected="true">Select a Batch</option>
-      <option value="2022">2022</option>
-      <option value="2023">2023</option>
-    </select>
+    <div class="form-group">
+      <label class="form-label" for="mobileNum">Mobile Number</label>
+      <input
+        class="form-control"
+        type="text"
+        id="mobileNum"
+        formControlName="mobileNum"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('mobileNum')?.errors &&
+            registrationForm.get('mobileNum')?.touched
+        }"
+      />
+      <div>
+        <small
+          class="text-danger"
+          *ngIf="
+            (registrationForm.get('mobileNum')?.errors &&
+              registrationForm.get('mobileNum')?.touched) ||
+            registrationForm.get('mobileNum')?.dirty
+          "
+          >Mobile Number is required.</small
+        >
+      </div>
+    </div>
 
-    <label for="degreeId">Degree : </label>
-    <select id="degreeId" formControlName="degreeId">
-      <option disabled selected="true">Select a degree program</option>
-      <ng-container *ngFor="let degree of degreeList">
-        <option value="{{ degree?.id }}">
-          {{ degree.code }} - {{ degree.name }}
-        </option>
-      </ng-container>
-      <!-- <option value="2">IIT</option> -->
-    </select>
+    <div class="form-group">
+      <label class="form-label" for="landlineNum">Landline Number</label>
+      <input
+        class="form-control"
+        type="text"
+        id="landlineNum"
+        formControlName="landlineNum"
+      />
+      <!-- <div>
+        <small
+          *ngIf="
+            (registrationForm.get('landlineNum')?.errors &&
+              registrationForm.get('landlineNum')?.touched) ||
+            registrationForm.get('landlineNum')?.dirty
+          "
+          >Address is required.</small
+        >
+      </div> -->
+    </div>
 
-    <input type="submit" value="Submit" />
+    <div class="form-group">
+      <label class="form-label" for="dateOfBirth">Date of birth</label>
+      <input
+        class="form-control"
+        type="text"
+        id="dateOfBirth"
+        formControlName="dateOfBirth"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('dateOfBirth')?.errors &&
+            registrationForm.get('dateOfBirth')?.touched
+        }"
+      />
+      <div>
+        <small
+          class="text-danger"
+          *ngIf="
+            registrationForm.get('dateOfBirth')?.errors &&
+            registrationForm.get('dateOfBirth')?.touched
+          "
+          >Date of birth is required.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="batch">Batch</label>
+      <select class="form-select" id="batch" formControlName="batch">
+        <option disabled selected="true">Select a Batch</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+      </select>
+      <div>
+        <small
+          class="text-danger"
+          *ngIf="
+            (registrationForm.get('batch')?.errors &&
+              registrationForm.get('batch')?.touched) ||
+            registrationForm.get('batch')?.dirty
+          "
+          >Batch is required.</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="degreeId">Degree : </label>
+      <select class="form-select" id="degreeId" formControlName="degreeId">
+        <option disabled selected="true">Select a degree program</option>
+        <ng-container *ngFor="let degree of degreeList">
+          <option value="{{ degree?.id }}">
+            {{ degree.code }} - {{ degree.name }}
+          </option>
+        </ng-container>
+        <!-- <option value="2">IIT</option> -->
+      </select>
+      <div>
+        <small
+          class="text-danger"
+          *ngIf="
+            (registrationForm.get('degreeId')?.errors &&
+              registrationForm.get('degreeId')?.touched) ||
+            registrationForm.get('degreeId')?.dirty
+          "
+          >Degree is required.</small
+        >
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Submit" />
   </form>
 
   <!-- <form

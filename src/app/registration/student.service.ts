@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IStudent } from './IStudent';
@@ -26,6 +26,8 @@ export class StudentService {
   //   this.students.push(student);
   //   return this.students;
   // }
+  
+
 
   getStudent(registerId: string): Observable<IStudent>{
     return this.http.get<IStudent>(`${this.baseUrl}/${registerId}`);
@@ -37,6 +39,17 @@ export class StudentService {
 
   addNewStudent(student: any): Observable<IStudent>{
     return this.http.post<IStudent>(`${this.baseUrl}/create`, student)
+  }
+
+  searchStudentByName(name: string): Observable<IStudent[]>{
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }), 
+    };
+    return this.http.post<IStudent[]>(`${this.baseUrl}/search`, JSON.stringify(name), requestOptions);
   }
 
 }

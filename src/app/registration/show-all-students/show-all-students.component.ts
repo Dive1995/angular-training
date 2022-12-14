@@ -10,6 +10,9 @@ import { StudentService } from '../student.service';
 })
 export class ShowAllStudentsComponent implements OnInit {
   studentList: IStudent[] = [];
+  registerId: string='';
+  searchName?: string;
+  searchResult: any;
 
   constructor(
     private router: Router, 
@@ -24,6 +27,14 @@ export class ShowAllStudentsComponent implements OnInit {
 
   addNewUser(){
     this.router.navigateByUrl('/reg/new-student')
+  }
+
+  searchStudent(){
+    if(this.searchName){
+      console.log('searching student ...');
+      
+      this.studentService.searchStudentByName(this.searchName).subscribe(res => this.searchResult=res);
+    }
   }
 
 }
