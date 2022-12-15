@@ -11,8 +11,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private authsservice: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.authsservice.isLoggedIn);
-    
+    console.log(this.authsservice.loggedInStatus());
   }
 
 }

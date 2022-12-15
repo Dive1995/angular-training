@@ -16,8 +16,8 @@ export class CreateNewStudentComponent implements OnInit {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     address: ['', Validators.required],
-    mobileNum:['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-    landlineNum:['',[Validators.maxLength(10), Validators.minLength(10)]],
+    mobileNum:['', [Validators.required,Validators.pattern("(07)[0-9 ]{8}")]],
+    landlineNum:['',[Validators.pattern("(0)[0-9 ]{9}")]],
     dateOfBirth:['1995-11-04', [Validators.required, this.dateValidator]],
     batch:[2022, Validators.required],
     degreeId:['', Validators.required]
@@ -41,6 +41,9 @@ export class CreateNewStudentComponent implements OnInit {
   addNewStudent(){
     if(this.registrationForm.valid){
       this.studentService.addNewStudent(this.registrationForm.value).subscribe(res => console.log(res))
+      this.registrationForm.reset();
+    }else{
+      this.registrationForm.markAllAsTouched();
     }
     // this.router.navigateByUrl('/reg');
   }

@@ -7,34 +7,19 @@ import { IStudent } from './IStudent';
   providedIn: 'root'
 })
 export class StudentService {
-
   baseUrl: string = "https://localhost:7288/api/student";
+  currentPage: number = 1;
 
-  // students: IStudent[] = [
-  //   {name:'Student 1', address:'Address 1', phone:765376766},
-  //   {name:'Student 2', address:'Address 2', phone:725334726},
-  //   {name:'Student 3', address:'Address 3', phone:755376476},
-  // ];
 
   constructor(private http: HttpClient) { }
-
-  // allStudents(): any{
-  //   return this.students;
-  // }
-
-  // addNewStudent(student: IStudent): IStudent[]{
-  //   this.students.push(student);
-  //   return this.students;
-  // }
-  
-
 
   getStudent(registerId: string): Observable<IStudent>{
     return this.http.get<IStudent>(`${this.baseUrl}/${registerId}`);
   }
 
-  getAllStudent(): Observable<IStudent[]>{
-    return this.http.get<IStudent[]>(this.baseUrl);
+  getAllStudent(): Observable<any>{
+    //student?page=2
+    return this.http.get<any>(`${this.baseUrl}?page=${this.currentPage}`);
   }
 
   addNewStudent(student: any): Observable<IStudent>{

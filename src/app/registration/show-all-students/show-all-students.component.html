@@ -6,20 +6,27 @@
     voluptas nihil nostrum. Aperiam, provident sint quo nihil unde dolor facere!
   </p>
 
+  <h3>{{ childTitle }}</h3>
   <app-search-student
     [searchResultFromParent]="searchResult"
     (searchEvent)="searchStudent($event)"
   ></app-search-student>
 
-  <div class="student" *ngFor="let student of studentList; let i = index">
-    <div routerLink="/student/:{i}">
-      <p style="font-weight: bold; font-size: 20px">{{ student.firstName }}</p>
-      <p>{{ student.registrationId }}</p>
-      <p>{{ student.address }}</p>
-      <p>{{ student.mobileNum }}</p>
-      <p>{{ student.dateOfBirth | date }}</p>
+  <ng-container *ngIf="studentList.length > 0">
+    <div class="student" *ngFor="let student of studentList; let i = index">
+      <div routerLink="/student/:{i}">
+        <p style="font-weight: bold; font-size: 20px">
+          {{ student.firstName }}
+        </p>
+        <p>{{ student.registrationId }}</p>
+        <p>{{ student.address }}</p>
+        <p>{{ student.mobileNum }}</p>
+        <p>{{ student.dateOfBirth | date }}</p>
+      </div>
     </div>
-  </div>
-
+    <button (click)="goToPreviousPage()">Prevoius</button>
+    <button (click)="goToNextPage()">Next</button>
+  </ng-container>
+  <br />
   <a (click)="addNewUser()">Click here to add new student!</a>
 </div>

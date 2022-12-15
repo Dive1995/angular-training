@@ -9,13 +9,19 @@
         [ngClass]="{
           'is-invalid':
             registrationForm.get('firstName')?.errors &&
-            registrationForm.controls['firstName'].touched
+            (registrationForm.controls['firstName'].touched ||
+              registrationForm.controls['firstName'].dirty)
         }"
         type="text"
         id="fname"
         formControlName="firstName"
       />
-      <div class="invalid-feedback">First Name is required.</div>
+      <div
+        class="invalid-feedback"
+        *ngIf="registrationForm.controls['firstName'].errors?.['required']"
+      >
+        First Name is required.
+      </div>
     </div>
 
     <div class="form-group">
@@ -28,17 +34,22 @@
         [ngClass]="{
           'is-invalid':
             registrationForm.get('lastName')?.errors &&
-            registrationForm.get('lastName')?.touched
+            (registrationForm.get('lastName')?.touched ||
+              registrationForm.controls['lastName'].dirty)
         }"
       />
-      <div>
+      <div
+        *ngIf="
+          registrationForm.get('lastName')?.errors &&
+          (registrationForm.get('lastName')?.touched ||
+            registrationForm.controls['lastName'].dirty)
+        "
+      >
         <!-- <div class="invalid-feedback">Last Name is required.</div> -->
         <small
           class="text-danger"
           *ngIf="
-            (registrationForm.get('lastName')?.errors &&
-              registrationForm.get('lastName')?.touched) ||
-            registrationForm.get('lastName')?.dirty
+            registrationForm.get('lastName')?.errors?.['required']            
           "
           >Last Name is required</small
         >
@@ -55,16 +66,21 @@
         [ngClass]="{
           'is-invalid':
             registrationForm.get('address')?.errors &&
-            registrationForm.get('address')?.touched
+            (registrationForm.get('address')?.touched ||
+              registrationForm.controls['address'].dirty)
         }"
       />
-      <div>
+      <div
+        *ngIf="
+          registrationForm.get('address')?.errors &&
+          (registrationForm.get('address')?.touched ||
+            registrationForm.controls['address'].dirty)
+        "
+      >
         <small
           class="text-danger"
           *ngIf="
-            (registrationForm.get('address')?.errors &&
-              registrationForm.get('address')?.touched) ||
-            registrationForm.get('address')?.dirty
+            registrationForm.get('address')?.errors?.['required']
           "
           >Address is required.</small
         >
@@ -81,18 +97,28 @@
         [ngClass]="{
           'is-invalid':
             registrationForm.get('mobileNum')?.errors &&
-            registrationForm.get('mobileNum')?.touched
+            (registrationForm.get('mobileNum')?.touched ||
+              registrationForm.controls['mobileNum'].dirty)
         }"
       />
-      <div>
+      <div
+        *ngIf="
+          registrationForm.get('mobileNum')?.errors &&
+          (registrationForm.get('mobileNum')?.touched ||
+            registrationForm.controls['mobileNum'].dirty)
+        "
+      >
         <small
           class="text-danger"
           *ngIf="
-            (registrationForm.get('mobileNum')?.errors &&
-              registrationForm.get('mobileNum')?.touched) ||
-            registrationForm.get('mobileNum')?.dirty
+            registrationForm.get('mobileNum')?.errors?.['required']
           "
           >Mobile Number is required.</small
+        >
+        <!-- *ngIf="
+          registrationForm.get('mobileNum')?.errors?.['maxLength'] || registrationForm.get('mobileNum')?.errors?.['minLength']" -->
+        <small class="text-danger"
+          >Enter a valid phone number (eg: 07XXXXXXXX)</small
         >
       </div>
     </div>
@@ -104,17 +130,24 @@
         type="text"
         id="landlineNum"
         formControlName="landlineNum"
+        [ngClass]="{
+          'is-invalid':
+            registrationForm.get('landlineNum')?.errors &&
+            (registrationForm.get('landlineNum')?.touched ||
+              registrationForm.controls['landlineNum'].dirty)
+        }"
       />
-      <!-- <div>
+      <div>
         <small
+          class="text-danger"
           *ngIf="
-            (registrationForm.get('landlineNum')?.errors &&
-              registrationForm.get('landlineNum')?.touched) ||
-            registrationForm.get('landlineNum')?.dirty
+            registrationForm.get('landlineNum')?.errors?.['pattern'] &&
+              (registrationForm.get('landlineNum')?.touched ||
+            registrationForm.get('landlineNum')?.dirty)
           "
-          >Address is required.</small
+          >Enter a valid number (Eg: 0XXXXXXXXX).</small
         >
-      </div> -->
+      </div>
     </div>
 
     <div class="form-group">
@@ -127,17 +160,30 @@
         [ngClass]="{
           'is-invalid':
             registrationForm.get('dateOfBirth')?.errors &&
-            registrationForm.get('dateOfBirth')?.touched
+            (registrationForm.get('dateOfBirth')?.touched ||
+              registrationForm.controls['dateOfBirth'].dirty)
         }"
       />
-      <div>
+      <div
+        *ngIf="
+          registrationForm.get('dateOfBirth')?.errors &&
+          (registrationForm.get('dateOfBirth')?.touched ||
+            registrationForm.controls['dateOfBirth'].dirty)
+        "
+      >
         <small
           class="text-danger"
           *ngIf="
-            registrationForm.get('dateOfBirth')?.errors &&
-            registrationForm.get('dateOfBirth')?.touched
+            registrationForm.get('dateOfBirth')?.errors?.['required']
           "
           >Date of birth is required.</small
+        >
+        <small
+          class="text-danger"
+          *ngIf="
+            registrationForm.get('dateOfBirth')?.errors?.['dateValidator']
+          "
+          >Date is not valid</small
         >
       </div>
     </div>
@@ -153,9 +199,8 @@
         <small
           class="text-danger"
           *ngIf="
-            (registrationForm.get('batch')?.errors &&
-              registrationForm.get('batch')?.touched) ||
-            registrationForm.get('batch')?.dirty
+            registrationForm.get('batch')?.errors &&
+            registrationForm.get('batch')?.touched
           "
           >Batch is required.</small
         >
@@ -177,9 +222,8 @@
         <small
           class="text-danger"
           *ngIf="
-            (registrationForm.get('degreeId')?.errors &&
-              registrationForm.get('degreeId')?.touched) ||
-            registrationForm.get('degreeId')?.dirty
+            registrationForm.get('degreeId')?.errors &&
+            registrationForm.get('degreeId')?.touched
           "
           >Degree is required.</small
         >
@@ -188,55 +232,4 @@
 
     <input class="btn btn-primary" type="submit" value="Submit" />
   </form>
-
-  <!-- <form
-    action=""
-    #registerForm="ngForm"
-    (ngSubmit)="addNewStudent(registerForm)"
-  >
-    <input
-      type="text"
-      name="name"
-      required
-      minlength="3"
-      placeholder="Student Name"
-      ngModel
-      #name="ngModel"
-    />
-    <div>
-      <small *ngIf="name.invalid && address.touched"
-        >Student name is required.</small
-      >
-    </div>
-    <input
-      type="text"
-      name="address"
-      required
-      maxlength="50"
-      placeholder="Address"
-      ngModel
-      #address="ngModel"
-    />
-    <div>
-      <small *ngIf="address.invalid && address.touched"
-        >Address is required.</small
-      >
-    </div>
-    <input
-      type="number"
-      name="phone"
-      required
-      minlength="9"
-      maxLength="9"
-      placeholder="Phone Number"
-      ngModel
-      #phone="ngModel"
-    />
-    <div>
-      <small *ngIf="phone.invalid && address.touched"
-        >Phone number is required.</small
-      >
-    </div>
-    <input type="submit" [disabled]="!registerForm.valid" />
-  </form> -->
 </div>

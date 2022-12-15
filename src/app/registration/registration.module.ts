@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchStudentComponent } from './search-student/search-student.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SearchStudentComponent } from './search-student/search-student.componen
     CreateNewStudentComponent,
     ShowAllStudentsComponent,
     RegistrationComponent,
-    SearchStudentComponent
+    SearchStudentComponent,
+    StudentProfileComponent
   ],
   imports: [
     CommonModule,

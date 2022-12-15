@@ -11,7 +11,7 @@ export class InternalBaseComponent implements OnInit {
   isLoggedIn: boolean;
 
   constructor(private authService: AuthService, private router: Router) { 
-    this.isLoggedIn = this.authService.isLoggedIn;
+    this.isLoggedIn = this.authService.loggedInStatus();
   }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class InternalBaseComponent implements OnInit {
 
   signOut():void{
     this.authService.signOut();
-    this.isLoggedIn = this.authService.isLoggedIn;
+    this.isLoggedIn = this.authService.loggedInStatus();
     this.router.navigateByUrl('/');
   }
 
