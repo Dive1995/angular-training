@@ -13,9 +13,10 @@ export class ShowAllStudentsComponent implements OnInit, AfterViewInit {
   studentList: IStudent[] = [];
   registerId: string='';
   searchResult: any;
+  searchName: string = '';
 
-  childTitle: any;
-  @ViewChild(SearchStudentComponent) child: any;
+  childSearch: any;
+  // @ViewChild(SearchStudentComponent) child: any;
 
   constructor(
     private router: Router, 
@@ -29,9 +30,9 @@ export class ShowAllStudentsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-      setTimeout(() => {
-        this.childTitle = this.child.title;
-      },0)      
+      // setTimeout(() => {
+      //   this.childSearch = this.child.searchName;
+      // },0)      
   }
 
   getAllStudent(){
@@ -42,8 +43,8 @@ export class ShowAllStudentsComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl('/reg/new-student')
   }
 
-  searchStudent(value: any){    
-    this.studentService.searchStudentByName(value).subscribe(res => this.searchResult=res);
+  searchStudent(){    
+    this.studentService.searchStudentByName(this.searchName).subscribe(res => this.studentList=res);
   }
 
   goToPreviousPage(){
@@ -57,6 +58,14 @@ export class ShowAllStudentsComponent implements OnInit, AfterViewInit {
     if(this.studentService.currentPage ){
       this.studentService.currentPage += 1;
       this.getAllStudent();
+    }
+  }
+
+  onSearch(){
+    if(!this.searchName){
+      this.getAllStudent();
+    }else{
+      this.studentService.searchStudentByName(this.searchName).subscribe(res => this.studentList=res);
     }
   }
 

@@ -1,1 +1,43 @@
-<p>student-profile works!</p>
+<div class="container">
+  <h3>{{ student?.firstName }} {{ student?.lastName }}</h3>
+  <p>Batch: {{ student?.batch }}</p>
+  <p>Mobile number: {{ student?.mobileNum }}</p>
+  <button class="btn btn-secondary" (click)="showForm()">Update profile</button>
+
+  <div style="margin-top: 20px" *ngIf="toggleModel">
+    <input
+      style="margin: 5px"
+      class="form-control"
+      type="text"
+      name="firstName"
+      placeholder="{{ student?.firstName }}"
+      [(ngModel)]="firstName"
+    />
+    <input
+      style="margin: 5px"
+      class="form-control"
+      type="text"
+      name="lastName"
+      placeholder="{{ student?.lastName }}"
+      [(ngModel)]="lastName"
+    />
+    <select
+      style="margin: 5px"
+      class="form-control"
+      name="batch"
+      id="batch"
+      [(ngModel)]="batch"
+    >
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+    </select>
+    <br />
+    <button
+      class="btn btn-outline-primary"
+      style="margin-top: 10px"
+      (click)="update()"
+    >
+      Update
+    </button>
+  </div>
+</div>

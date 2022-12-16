@@ -6,15 +6,21 @@
     voluptas nihil nostrum. Aperiam, provident sint quo nihil unde dolor facere!
   </p>
 
-  <h3>{{ childTitle }}</h3>
-  <app-search-student
-    [searchResultFromParent]="searchResult"
-    (searchEvent)="searchStudent($event)"
-  ></app-search-student>
+  <div>
+    <label class="form-label" for="search">Student name</label>
+    <input
+      class="form-control"
+      id="search"
+      type="text"
+      [(ngModel)]="searchName"
+      (ngModelChange)="onSearch()"
+    />
+    <button (click)="searchStudent()" class="btn btn-primary">Search</button>
+  </div>
 
   <ng-container *ngIf="studentList.length > 0">
     <div class="student" *ngFor="let student of studentList; let i = index">
-      <div routerLink="/student/:{i}">
+      <div routerLink="/reg/student/{{ student.registrationId }}">
         <p style="font-weight: bold; font-size: 20px">
           {{ student.firstName }}
         </p>
@@ -24,8 +30,14 @@
         <p>{{ student.dateOfBirth | date }}</p>
       </div>
     </div>
-    <button (click)="goToPreviousPage()">Prevoius</button>
-    <button (click)="goToNextPage()">Next</button>
+    <div *ngIf="!searchName">
+      <button (click)="goToPreviousPage()">Prevoius</button>
+      <button (click)="goToNextPage()">Next</button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="studentList.length == 0">
+    <p>No students available</p>
   </ng-container>
   <br />
   <a (click)="addNewUser()">Click here to add new student!</a>

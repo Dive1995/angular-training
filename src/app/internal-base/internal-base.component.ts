@@ -19,8 +19,8 @@ export class InternalBaseComponent implements OnInit {
 
   signOut():void{
     this.authService.signOut();
-    this.isLoggedIn = this.authService.loggedInStatus();
-    this.router.navigateByUrl('/');
+    this.isLoggedIn = false;
+    this.router.navigateByUrl('/auth/login');
   }
 
   

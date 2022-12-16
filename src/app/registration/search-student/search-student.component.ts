@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SearchStudentComponent implements OnInit {
   searchName: string = '';
-  title: string = 'Search  Student';
   @Input() searchResultFromParent: any;
 
   @Output() searchEvent = new EventEmitter<string>();

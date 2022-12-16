@@ -7,7 +7,7 @@ import { IStudent } from './IStudent';
   providedIn: 'root'
 })
 export class StudentService {
-  baseUrl: string = "https://localhost:7288/api/student";
+  baseUrl: string = "/api/student";
   currentPage: number = 1;
 
 
@@ -37,4 +37,7 @@ export class StudentService {
     return this.http.post<IStudent[]>(`${this.baseUrl}/search`, JSON.stringify(name), requestOptions);
   }
 
+  updateStudent(student: any): Observable<IStudent>{
+    return this.http.patch<IStudent>(`${this.baseUrl}/update`, student);
+  }
 }

@@ -18,7 +18,7 @@ export class CreateNewStudentComponent implements OnInit {
     address: ['', Validators.required],
     mobileNum:['', [Validators.required,Validators.pattern("(07)[0-9 ]{8}")]],
     landlineNum:['',[Validators.pattern("(0)[0-9 ]{9}")]],
-    dateOfBirth:['1995-11-04', [Validators.required, this.dateValidator]],
+    dateOfBirth:['', [Validators.required, this.dateValidator]],
     batch:[2022, Validators.required],
     degreeId:['', Validators.required]
   });
