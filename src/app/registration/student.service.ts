@@ -19,6 +19,8 @@ export class StudentService {
 
   getAllStudent(): Observable<any>{
     //student?page=2
+    console.log(this.baseUrl);
+    
     return this.http.get<any>(`${this.baseUrl}?page=${this.currentPage}`);
   }
 

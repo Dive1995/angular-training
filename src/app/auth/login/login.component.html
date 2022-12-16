@@ -1,13 +1,26 @@
-<div class="content">
-  <h2>Login</h2>
+<div
+  class="container rounded p-4"
+  style="max-width: 400px; background-color: #f5f5f5; margin: 20vh auto"
+>
+  <h2 style="text-align: center; margin: 20px auto">Login</h2>
   <form action="" [formGroup]="loginForm" (ngSubmit)="login()">
-    <input type="text" formControlName="username" placeholder="Username" />
+    <input
+      class="form-control mb-2"
+      type="text"
+      formControlName="username"
+      placeholder="Username"
+    />
     <small
       style="color: red"
       *ngIf="loginForm.get('username')?.errors?.['required'] && loginForm.get('username')?.touched"
       >Username is required</small
     >
-    <input type="password" formControlName="password" placeholder="Password" />
+    <input
+      class="form-control"
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+    />
     <small
       style="color: red"
       *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
@@ -18,8 +31,17 @@
       *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched"
       >Password should be 8 characters long</small
     >
-    <input [disabled]="loginForm.invalid" type="submit" value="Log in" />
+    <br />
+    <input
+      class="btn btn-primary"
+      [disabled]="loginForm.invalid"
+      type="submit"
+      value="Log in"
+      style="width: 100%"
+    />
   </form>
-  <button (click)="goBack()">Go back</button>
+  <!-- <button class="btn btn-secondary mt-2" style="width: 100%" (click)="goBack()">
+    Go back
+  </button> -->
   <!-- <button (click)="login()">Log In</button> -->
 </div>

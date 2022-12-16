@@ -42,10 +42,11 @@ export class CreateNewStudentComponent implements OnInit {
     if(this.registrationForm.valid){
       this.studentService.addNewStudent(this.registrationForm.value).subscribe(res => console.log(res))
       this.registrationForm.reset();
+      alert("Registered successfully.");
+      // this.router.navigateByUrl('/reg');
     }else{
       this.registrationForm.markAllAsTouched();
     }
-    // this.router.navigateByUrl('/reg');
   }
 
   dateValidator(control: AbstractControl){

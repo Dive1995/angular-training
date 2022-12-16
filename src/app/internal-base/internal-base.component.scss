@@ -1,21 +1,21 @@
-nav{
-    background-color: antiquewhite;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+// nav{
+//     background-color: antiquewhite;
+//     padding: 10px;
+//     border-radius: 10px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+// }
 
-    ul{
-        display: flex;
-        justify-content: space-between;
-        list-style-type: none;
-        
-        a{
-            cursor: pointer;
-            margin-left:10px;
-            color: #333;
-            text-decoration: none;
-        }
+ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    
+    a{
+        cursor: pointer;
+        margin-left:10px;
+        // color: #333;
+        text-decoration: none;
     }
 }

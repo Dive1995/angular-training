@@ -1,17 +1,17 @@
-<nav>
+<nav class="navbar navbar-light p-4" style="background-color: #e3f2fd">
   <h1 routerLink="/">Angular training</h1>
   <ul>
     <li>
-      <a routerLink="/">Home</a>
+      <a class="nav-link" routerLink="/">Home</a>
     </li>
     <li>
-      <a routerLink="/reg">Registration</a>
+      <a class="nav-link" routerLink="/reg">Registration</a>
     </li>
     <li *ngIf="isLoggedIn == false">
-      <a routerLink="/auth/login">Login</a>
+      <a class="nav-link" routerLink="/auth/login">Login</a>
     </li>
     <li *ngIf="isLoggedIn == true">
-      <a (click)="signOut()">Sign out</a>
+      <a class="nav-link" (click)="signOut()">Sign out</a>
     </li>
   </ul>
 </nav>

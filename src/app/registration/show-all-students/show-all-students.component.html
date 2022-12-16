@@ -1,5 +1,5 @@
-<div class="content container">
-  <h1>List of students.</h1>
+<div class="container mt-4 rounded p-4">
+  <h2>List of students.</h2>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, aperiam
     unde doloremque doloribus expedita in ipsa quisquam, quibusdam provident
@@ -11,33 +11,37 @@
   >
   <br />
 
-  <div>
-    <label class="form-label" for="search">Student name</label>
+  <div class="input-group my-4">
     <input
       class="form-control"
       id="search"
       type="text"
       [(ngModel)]="searchName"
       (ngModelChange)="onSearch()"
+      placeholder="Search student by name"
     />
     <button (click)="searchStudent()" class="btn btn-primary">Search</button>
   </div>
 
   <ng-container *ngIf="studentList.length > 0">
-    <div class="student" *ngFor="let student of studentList; let i = index">
-      <div routerLink="/reg/student/{{ student.registrationId }}">
-        <p style="font-weight: bold; font-size: 20px">
-          {{ student.firstName }}
-        </p>
-        <p>{{ student.registrationId }}</p>
-        <p>{{ student.address }}</p>
-        <p>{{ student.mobileNum }}</p>
-        <p>{{ student.dateOfBirth | date }}</p>
+    <div class="my-2" *ngFor="let student of studentList; let i = index">
+      <div class="card" routerLink="/reg/student/{{ student.registrationId }}">
+        <div class="card-header" style="font-weight: bold; font-size: 20px">
+          {{ student.firstName }} {{ student.lastName }}
+        </div>
+        <div class="card-body">
+          <p>RegistrationID: {{ student.registrationId }}</p>
+          <p>Address: {{ student.address }}</p>
+          <p>Mobile Num: {{ student.mobileNum }}</p>
+          <p>DOB: {{ student.dateOfBirth | date }}</p>
+        </div>
       </div>
     </div>
-    <div *ngIf="!searchName">
-      <button (click)="goToPreviousPage()">Prevoius</button>
-      <button (click)="goToNextPage()">Next</button>
+    <div *ngIf="!searchName" class="d-flex justify-content-between mt-4">
+      <button class="btn btn-light" (click)="goToPreviousPage()">
+        Prevoius
+      </button>
+      <button class="btn btn-dark" (click)="goToNextPage()">Next</button>
     </div>
   </ng-container>
 
