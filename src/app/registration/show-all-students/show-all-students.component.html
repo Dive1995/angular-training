@@ -6,6 +6,11 @@
     voluptas nihil nostrum. Aperiam, provident sint quo nihil unde dolor facere!
   </p>
 
+  <a class="text-primary" (click)="addNewUser()"
+    >Click here to add new student!</a
+  >
+  <br />
+
   <div>
     <label class="form-label" for="search">Student name</label>
     <input
@@ -39,6 +44,4 @@
   <ng-container *ngIf="studentList.length == 0">
     <p>No students available</p>
   </ng-container>
-  <br />
-  <a (click)="addNewUser()">Click here to add new student!</a>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IStudent } from '../IStudent';
 import { StudentService } from '../student.service';
 
@@ -16,7 +16,7 @@ export class StudentProfileComponent implements OnInit {
   lastName: string = "";
   batch?: number;
 
-  constructor(private route: ActivatedRoute, private studentService: StudentService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,12 +33,22 @@ export class StudentProfileComponent implements OnInit {
     this.toggleModel = true;
   }
 
+  cancel(){
+    this.toggleModel = false;
+  }
+
   update(){
+    if(confirm("Do you want to continue?")){
+      var student = {...this.student, firstName:this.firstName, lastName:this.lastName, batch: this.batch};   
+      console.log(student);
+      
+      this.studentService.updateStudent(student).subscribe(res => {
+        console.log(res);
+        this.router.navigateByUrl(`/reg/student/${res.registrationId}`);
+        this.toggleModel = false;
+      });
+    }  
     
-    var student = {...this.student, firstName:this.firstName, lastName:this.lastName, batch: this.batch};   
-    console.log(student);
-    
-    this.studentService.updateStudent(student).subscribe(res => console.log(res));
   }
 
 }
